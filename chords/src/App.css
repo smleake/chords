@@ -1,0 +1,32 @@
+.AlbumCard {
+    max-width: 900px;
+}
+/* .split{
+    display: grid;
+    grid-template-columns: 2, 1fr;
+    grid-auto-columns: 500px, 900px;
+} */
+
+
+.Albums {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px
+
+}
+#mySideBar {
+    position: absolute;
+    transition: 0.3s;
+    width: 850px;
+    background-color: lightgray;
+
+}
+#mySideBar:hover {
+    left: 0;
+}
+.Collage {
+    display: inline-grid;
+    grid-template-columns: auto auto auto;
+    row-gap: 20px;
+    column-gap: 0px;
+}
