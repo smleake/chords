@@ -1,0 +1,468 @@
+union SearchResult = Album | Artist | Track
+type Album {
+  album_type: String
+  artists: [SimplifiedArtist]
+  available_markets: [String]
+  copyrights: [Copyright]
+  external_ids: ExternalId
+  external_urls: ExternalUrl
+  genres: [String]
+  href: String
+  id: ID!
+  images: [Image]
+  label: String
+  name: String
+  popularity: Int
+  release_date: String
+  release_date_precision: String
+  restrictions: AlbumRestriction
+  tracks: [SimplifiedTrack]
+  type: String
+  uri: String
+}
+
+type AlbumRestriction {
+  reason: String
+}
+
+type Artist {
+  external_urls: ExternalUrl
+  followers: Followers
+  genres: [String]
+  href: String
+  id: ID!
+  images: [Image]
+  name: String
+  popularity: Int
+  type: String
+  uri: String
+}
+
+type AudioFeatures {
+  acousticness: Float
+  analysis_url: String
+  danceability: Float
+  duration_ms: Int
+  energy: Float
+  id: ID!
+  instrumentalness: Float
+  key: Int
+  liveness: Float
+  loudness: Float
+  mode: Int
+  speechiness: Float
+  tempo: Float
+  time_signature: Int
+  track_href: String
+  type: String
+  uri: String
+  valence: Float
+}
+
+type Category {
+  href: String
+  icons: [Image]
+  id: ID!
+  name: String
+}
+
+type Context {
+  external_urls: ExternalUrl
+  href: String
+  type: String
+  uri: String
+}
+
+type Copyright {
+  text: String
+  type: String
+}
+
+type CurrentlyPlayingContext {
+  actions: Disallows
+  context: Context
+  currently_playing_type: String
+  device: Device
+  is_playing: Boolean
+  progress_ms: Int
+  repeat_state: String
+  shuffle_state: String
+  timestamp: Int
+}
+
+type CurrentlyPlaying {
+  context: Context
+  currently_playing_type: String
+  is_playing: Boolean
+  progress_ms: Int
+  timestamp: Int
+}
+
+type Cursor {
+  after: String
+}
+
+type CursorPaging {
+  cursors: Cursor
+  href: String
+  limit: Int
+  next: String
+  total: Int
+}
+
+type Device {
+  id: ID!
+  is_active: Boolean
+  is_private_session: Boolean
+  is_restricted: Boolean
+  name: String
+  type: String
+  volume_percent: Int
+}
+
+type Devices {
+  devices: [Device]
+}
+
+type Disallows {
+  interrupting_playback: Boolean
+  pausing: Boolean
+  resuming: Boolean
+  seeking: Boolean
+  skipping_next: Boolean
+  skipping_prev: Boolean
+  toggling_repeat_context: Boolean
+  toggling_repeat_track: Boolean
+  toggling_shuffle: Boolean
+  transferring_playback: Boolean
+}
+
+type Episode {
+  audio_preview_url: String
+  description: String
+  duration_ms: Int
+  explicit: Boolean
+  external_urls: ExternalUrl
+  href: String
+  id: ID!
+  images: [Image]
+  is_externally_hosted: Boolean
+  is_playable: Boolean
+  language: String
+  languages: [String]
+  name: String
+  release_date: String
+  release_date_precision: String
+  resume_point: ResumePoint
+  show: SimplifiedShow 
+  type: String
+  uri: String
+}
+
+type Error {
+  message: String
+  status: Int
+}
+
+type ExplicitContentSettings {
+  filter_enabled: Boolean
+  filter_locked: Boolean
+}
+
+type ExternalId {
+  ean: String
+  isrc: String
+  upc: String
+}
+
+type ExternalUrl {
+  spotify: String
+}
+
+type Followers {
+  href: String
+  total: Int
+}
+type GenericSearch {
+  href: String
+  items: [SearchResult]
+  limit: Int
+  next: String
+  offset: Int
+  previous: String
+  total: Int
+}
+type GenericSearchResults {
+  albums: GenericSearch
+  artists: GenericSearch
+  tracks: GenericSearch
+}
+type Image {
+  height: Int
+  url: String
+  width: Int
+}
+
+type LinkedTrack {
+  external_urls: ExternalUrl
+  href: String
+  id: ID!
+  type: String
+  uri: String
+}
+
+type Paging {
+  href: String
+  limit: Int
+  next: String
+  offset: Int
+  previous: String
+  total: Int
+}
+
+type PlayHistory {
+  context: Context
+  track: SimplifiedTrack 
+}
+
+type PlayerError {
+  message: String
+  reason: String
+  status: Int
+}
+
+type Playlist {
+  collaborative: Boolean
+  description: String
+  external_urls: ExternalUrl
+  followers: Followers
+  href: String
+  id: ID!
+  images: [Image]
+  name: String
+  owner: PublicUser 
+  public: Boolean
+  snapshot_id: String
+  tracks: [PlaylistTrack]
+  type: String
+  uri: String
+}
+
+type PlaylistTrack {
+  added_by: PublicUser 
+  is_local: Boolean
+}
+
+type PlaylistTracksRef {
+  href: String
+  total: Int
+}
+
+type PrivateUser {
+  country: String
+  display_name: String
+  email: String
+  explicit_content: ExplicitContentSettings
+  external_urls: ExternalUrl
+  followers: Followers
+  href: String
+  id: ID!
+  images: [Image]
+  product: String
+  type: String
+  uri: String
+}
+
+type PublicUser {
+  display_name: String
+  external_urls: ExternalUrl
+  followers: Followers
+  href: String
+  id: ID!
+  images: [Image]
+  type: String
+  uri: String
+}
+
+type RecommendationSeed {
+  afterFilteringSize: Int
+  afterRelinkingSize: Int
+  href: String
+  id: ID!
+  initialPoolSize: Int
+  type: String
+}
+
+type Recommendations {
+  seeds: [RecommendationSeed]
+  tracks: [SimplifiedTrack] 
+}
+
+type ResumePoint {
+  fully_played: Boolean
+  resume_position_ms: Int
+}
+
+type Show {
+  available_markets: [String]
+  copyrights: [Copyright]
+  description: String
+  episodes: [SimplifiedEpisode] 
+  explicit: Boolean
+  external_urls: ExternalUrl
+  href: String
+  id: ID!
+  images: [Image]
+  is_externally_hosted: Boolean
+  languages: [String]
+  media_type: String
+  name: String
+  publisher: String
+  type: String
+  uri: String
+}
+
+type SimplifiedAlbum {
+  album_group: String
+  album_type: String
+  artists: [SimplifiedArtist] 
+  available_markets: [String]
+  external_urls: ExternalUrl
+  href: String
+  id: ID!
+  images: [Image]
+  name: String
+  release_date: String
+  release_date_precision: String
+  restrictions: AlbumRestriction
+  type: String
+  uri: String
+}
+
+type SimplifiedArtist {
+  external_urls: ExternalUrl
+  href: String
+  id: ID!
+  name: String
+  type: String
+  uri: String
+}
+
+type SimplifiedEpisode {
+  audio_preview_url: String
+  description: String
+  duration_ms: Int
+  explicit: Boolean
+  external_urls: ExternalUrl
+  href: String
+  id: ID!
+  images: [Image]
+  is_externally_hosted: Boolean
+  is_playable: Boolean
+  language: String
+  languages: [String]
+  name: String
+  release_date: String
+  release_date_precision: String
+  resume_point: ResumePoint
+  type: String
+  uri: String
+}
+
+type SimplifiedPlaylist {
+  collaborative: Boolean
+  description: String
+  external_urls: ExternalUrl
+  href: String
+  id: ID!
+  images: [Image]
+  name: String
+  owner: PublicUser
+  public: Boolean
+  snapshot_id: String
+  tracks: PlaylistTracksRef
+  type: String
+  uri: String
+}
+
+type SimplifiedShow {
+  available_markets: [String]
+  copyrights: [Copyright]
+  description: String
+  explicit: Boolean
+  external_urls: ExternalUrl
+  href: String
+  id: ID!
+  images: [Image]
+  is_externally_hosted: Boolean
+  languages: [String]
+  media_type: String
+  name: String
+  publisher: String
+  type: String
+  uri: String
+}
+
+type SimplifiedTrack {
+  artists: [SimplifiedArtist]
+  available_markets: [String]
+  disc_number: Int
+  duration_ms: Int
+  explicit: Boolean
+  external_urls: ExternalUrl
+  href: String
+  id: ID!
+  is_local: Boolean
+  is_playable: Boolean
+  linked_from: LinkedTrack
+  name: String
+  preview_url: String
+  restrictions: TrackRestriction
+  track_number: Int
+  type: String
+  uri: String
+}
+
+type Track {
+  album: SimplifiedAlbum
+  artists: [SimplifiedArtist]
+  available_markets: [String]
+  disc_number: Int
+  duration_ms: Int
+  explicit: Boolean
+  external_ids: ExternalId
+  external_urls: ExternalUrl
+  href: String
+  id: ID!
+  is_local: Boolean
+  is_playable: Boolean
+  linked_from: String
+  name: String
+  popularity: Int
+  preview_url: String
+  restrictions: TrackRestriction
+  track_number: Int
+  type: String
+  uri: String
+}
+
+type TrackRestriction {
+  reason: String
+}
+
+type TuneableTrack {
+  acousticness: Float
+  danceability: Float
+  duration_ms: Int
+  energy: Float
+  instrumentalness: Float
+  key: Int
+  liveness: Float
+  loudness: Float
+  mode: Int
+  popularity: Float
+  speechiness: Float
+  tempo: Float
+  time_signature: Int
+  valence: Float
+}

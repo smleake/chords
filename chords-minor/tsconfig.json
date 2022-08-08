@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "target": "ES5",
+        "module": "commonjs",
+        "lib": ["esnext"],
+        "strict": true,
+        "rootDir": ".",
+        "outDir": "dist",
+        "sourceMap": true,
+        "esModuleInterop": true,
+        "moduleResolution": "Node",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true
+    },
+    "include": ["./types/**{.d}.ts",  "./**/**.ts"],
+    "exclude": ["./generated/graphql.ts, "],
+    "files": [
+        "./types/custom.d.ts"
+    ]
+    
+}
